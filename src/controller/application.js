@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Navigation from '../navigation/navigation';
+import NewIn from '../Page/New_IN/newIn';
 
 function Application() {
     return(
@@ -8,7 +9,7 @@ function Application() {
                 <Navigation/>
 
                 <Switch>
-                    <Route exact path='/' component={a} />
+                    <Route exact path='/' component={NewIn} />
                     <Route  path='/furniture' component={b} />
                     <Route  path='/magazine' component={c} />
                     <Route  path='/help' component={d} />
@@ -18,7 +19,6 @@ function Application() {
     )
 }
 
-const a = () =>  <h1>A</h1>;
 const b = () =>  <h1>B</h1>;
 const c = () =>  <h1>C</h1>;
 const d = () =>  <h1>D</h1>;

@@ -14,7 +14,7 @@ function Navigation() {
 
     return(
         <Fragment>
-            <Box layerStyle='containerDesktopDevice'>
+            <Box layerStyle='containerDesktopDevice' zIndex='99'>
                 <Container maxW={{lg:'lg', md:'lg', xl:'lg'}} w='auto'>
                     <Flex>
                         <Link as={NavLink} exact to='/' fontSize='2xl' my={3} _hover='' fontWeight='bold'   >Furniture</Link>
@@ -33,7 +33,7 @@ function Navigation() {
                                 {!isOpen && <HiOutlineMenuAlt1 size={25} style={{zIndex : 1}}  onClick={onOpen} />}
                                 {isOpen && <AiOutlineClose size={25} style={{zIndex : 1}} color='white'  onClick={onClose} />}
 
-                                <VStack transform={isOpen ? 'scale(1)' : 'scale(0)'} layerStyle='containerMobileDevice' h='100vh'>
+                                <VStack transform={isOpen ? 'scale(1)' : 'scale(0)'} layerStyle='containerMobileDevice' h='110vh'>
                                     <Stack mt='30%' spacing='30%'>
                                         {arrayMenu.map((item,index) => {
                                             return <Link exact as={NavLink} activeClassName='me' to={item.link} key={index} layerStyle='NavlinkMobile' _hover=''>{item.menu}</Link>
