@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
-import {Container, Grid, Box, Image, Text, VStack, Heading, Button, SimpleGrid, useBreakpoint} from '@chakra-ui/core'
+import {Container, Grid, Box, Image, Text, VStack, Heading, Button, SimpleGrid, Divider, useMediaQuery} from '@chakra-ui/core'
 import chairs from '../../img/01_Halaman-newIn/header.png';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 
 function NewIn() {
+    const [isDesktop_Laptop_Tablet, isMobile] = useMediaQuery([
+        '(min-width: 1024px)', '(min-width: 200px) and (max-width:767px)'
+    ])
 
     return(
         <Fragment>
@@ -25,6 +28,33 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 2 -------*/}
+                <Grid layerStyle='GridContent2' mt='5%' fontFamily='poppins'> 
+                    <SimpleGrid h='auto'>
+                        <Box textAlign={['center','left','center','left']}>
+                            <Text fontWeight='bold'>On Sale</Text>
+                            <Heading my={5}>Up to 20% off</Heading>
+                            <Divider w={['80%','0','40%','80%']} border='2px' color='#FE7865' margin={['auto','0','auto','0']} />
+                            <Text opacity='0.3' fontSize='xs'>Our entire Winter collection.</Text>
+                        </Box>
+                        <Box textAlign='center' mb={['5%']}>
+                            {isDesktop_Laptop_Tablet ? 
+                                <>
+                                    <Text>Accessories</Text>
+                                    <Text>Chairs & Stools</Text>
+                                    <Text>Sofas & armchairs</Text>
+                                    <Text>Tables</Text>
+                                    <Text>Lighting</Text>
+                                    <Text>Furnishings</Text>
+                                </>
+                                :
+                                <Button w='50%' bg='#2C2E3F' color='white' rounded='0' border='0'   _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>Menu</Button>
+                            }
+                        </Box>
+                    </SimpleGrid>
+                    <Box w='full' h='80vh' bg='salmon'>
+
+                    </Box>
+                </Grid>
             </Container>
         </Fragment>
     )

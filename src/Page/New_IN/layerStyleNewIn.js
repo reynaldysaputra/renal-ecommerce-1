@@ -16,5 +16,14 @@ export const styleNewIn = {
         cursor : 'pointer',
         bg : '#FE7865',
         color:'white'
+    },
+
+    GridContent2 : {
+        gridTemplateColumns : {
+            sm : '100%',
+            md : '100%',
+            lg : '20% 80%',
+            xl : '20% 80%',
+        },
     }
 }
