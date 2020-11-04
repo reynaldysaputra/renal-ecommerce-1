@@ -1,7 +1,14 @@
 import React, { Fragment } from 'react';
 import {Container, Grid, Box, Image, Text, VStack, Heading, Button, SimpleGrid, Divider, useMediaQuery} from '@chakra-ui/core'
-import chairs from '../../img/01_Halaman-newIn/header.png';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
+import {Figure} from './childComponent';
+import chairs from '../../img/01_Halaman-newIn/header.png';
+import BarangBekas from '../../img/01_Halaman-newIn/RouteBarangBekas/barangBekas.jpg';
+import Kursi_Bangku from '../../img/01_Halaman-newIn/RouteKursi&Bangku/bangku.jpg';
+import LampuBelajar from '../../img/01_Halaman-newIn/RouteLampuBelajar/lampuBelajar.png';
+import Meja from '../../img/01_Halaman-newIn/RouteMeja/tabel.png';
+import Sofa from '../../img/01_Halaman-newIn/RouteSofa/sofa.png';
+import Tanaman from '../../img/01_Halaman-newIn/RouteTanaman/aksesoris tanaman.png';
 
 function NewIn() {
     const [isDesktop_Laptop_Tablet, isMobile] = useMediaQuery([
@@ -29,31 +36,56 @@ function NewIn() {
 
                 {/* ------- CONTENT 2 -------*/}
                 <Grid layerStyle='GridContent2' mt='5%' fontFamily='poppins'> 
-                    <SimpleGrid h='auto'>
+                    <SimpleGrid h='max-content'>
                         <Box textAlign={['center','left','center','left']}>
                             <Text fontWeight='bold'>On Sale</Text>
                             <Heading my={5}>Up to 20% off</Heading>
-                            <Divider w={['80%','0','40%','80%']} border='2px' color='#FE7865' margin={['auto','0','auto','0']} />
+                            <Divider w={['80%','0','40%','80%']} border='2px' color='#2C2E3F' margin={['auto','0','auto','0']} />
                             <Text opacity='0.3' fontSize='xs'>Our entire Winter collection.</Text>
                         </Box>
-                        <Box textAlign='center' mb={['5%']}>
+                        <Box textAlign='center' mb={['5%']} mt={['','','10%','15%']}>
                             {isDesktop_Laptop_Tablet ? 
                                 <>
-                                    <Text>Accessories</Text>
-                                    <Text>Chairs & Stools</Text>
-                                    <Text>Sofas & armchairs</Text>
-                                    <Text>Tables</Text>
-                                    <Text>Lighting</Text>
-                                    <Text>Furnishings</Text>
+                                    <Text cursor='pointer'>Accessories</Text>
+                                    <Text cursor='pointer'>Chairs & Stools</Text>
+                                    <Text cursor='pointer'>Sofas & armchairs</Text>
+                                    <Text cursor='pointer'>Tables</Text>
+                                    <Text cursor='pointer'>Lighting</Text>
+                                    <Text cursor='pointer'>Furnishings</Text>
                                 </>
                                 :
-                                <Button w='50%' bg='#2C2E3F' color='white' rounded='0' border='0'   _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>Menu</Button>
+                                <Button w='50%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>Menu</Button>
                             }
                         </Box>
                     </SimpleGrid>
-                    <Box w='full' h='80vh' bg='salmon'>
-
-                    </Box>
+                    <Grid templateColumns={['100%','100%','50% 50%','50% 50%']} gridColumnGap={5} gridRowGap={[7,5,0,0]} p='30px' boxSizing='border-box' w='80%' justifySelf='center' h='auto' >
+                        <Figure size='80%' justifySelf='flex-end' bg='#BADAC4' mt={['','','10%','15%']}>
+                            <Image src={Tanaman} w='80%' mb='25%' mt={['','','-20%','-25%']} />
+                            <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Accessories</Box>
+                        </Figure>
+                        <Figure size='80%' justifySelf='flex-start' mt={['','','40%','45%']} bg='#DBEDF0'>
+                            <Image src={Sofa} w='80%' mb='25%' mt={['','','-20%','-25%']} />
+                            <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Sofas & armchairs</Box>
+                        </Figure>
+                        <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0'>
+                            <Image src={Kursi_Bangku} w='100%'/>
+                            <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Chairs & Stools</Box>
+                        </Figure>
+                        <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']} pt={['25%','','30%','35%']}>
+                            <Box w='full' position='absolute' top='0' zIndex='-1' h='80%' bg='#FFEDDB'/>
+                            <Image src={Meja} w='100%' />
+                            <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Tables & Stools</Box>
+                        </Figure>
+                        <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']}>
+                            <Box w='75%' position='absolute' top='0' right='0' zIndex='-1' h='70%' bg='#FFEDDB'/>
+                            <Image src={LampuBelajar} w='80%' />
+                            <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Lighting</Box>
+                        </Figure>
+                        <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0'>
+                            <Image src={BarangBekas} w='100%'/>
+                            <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Chairs & Stools</Box>
+                        </Figure>
+                    </Grid>
                 </Grid>
             </Container>
         </Fragment>

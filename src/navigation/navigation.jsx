@@ -33,7 +33,7 @@ function Navigation() {
                                 {!isOpen && <HiOutlineMenuAlt1 size={25} style={{zIndex : 1}}  onClick={onOpen} />}
                                 {isOpen && <AiOutlineClose size={25} style={{zIndex : 1}} color='white'  onClick={onClose} />}
 
-                                <VStack transform={isOpen ? 'scale(1)' : 'scale(0)'} opacity={isOpen ? 1 : 0} transition={isOpen ? '.3s' : '0'}  layerStyle='containerMobileDevice' h='110vh'>
+                                <VStack transform={isOpen ? 'scale(1)' : 'scale(0)'} opacity={isOpen ? 1 : 0} transition={isOpen ? '.3s' : '0'}  layerStyle='containerMobileDevice'>
                                     <Stack mt='30%' spacing='30%'>
                                         {arrayMenu.map((item,index) => {
                                             return <Link exact as={NavLink} activeClassName='me' to={item.link} key={index} layerStyle='NavlinkMobile' _hover=''>{item.menu}</Link>

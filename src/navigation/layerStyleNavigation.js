@@ -7,6 +7,7 @@ export const styleNavigation  = {
         align : 'center',
         background : '#2C2E3F',
         color : 'white',
+        h:'110vh'
     },
     NavlinkMobile : {
         marginTop : 10,
