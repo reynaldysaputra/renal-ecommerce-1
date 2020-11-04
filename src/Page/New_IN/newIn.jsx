@@ -14,7 +14,7 @@ function NewIn() {
                 {/* ------- CONTENT 1 -------*/}
                 <Grid layerStyle='Container1NewIn'>
                     <VStack h={['auto','60vh','60vh','80vh']} bg='#F5F8FC' px={['0','0','0','0']}>
-                        <Image src={chairs} alt='Chairs' ml={['10%','0','0','0']} mt={['25%', '40%', '30%', '20%']} w={['60%','70%','auto','auto']} />
+                        <Image src={chairs} alt='Chairs' mt={['25%', '40%', '30%', '20%']} w={['60%','70%','auto','auto']} ml={['0','0','-10%','-10%']} />
 
                         <Box pos={{base:'relative', xl:'absolute', md:'absolute', lg:'absolute'}} top={['0','30%','25%','15%']} left={['0','30%','55%','50%']} my={['10% !important','0%','0%','0%']} fontFamily='poppins' textAlign={['center','left','left','left']}>
                             <Text m='0' fontWeight='bold'>New Collection</Text>

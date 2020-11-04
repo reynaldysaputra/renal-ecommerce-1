@@ -5,7 +5,6 @@ export const styleNavigation  = {
         position : 'absolute',
         top : '0', left : '0', right : '0', bottom : '0',
         align : 'center',
-        transition : '.3s',
         background : '#2C2E3F',
         color : 'white',
     },
