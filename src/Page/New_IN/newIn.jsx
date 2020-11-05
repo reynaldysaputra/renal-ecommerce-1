@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
-import {Container, Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar} from '@chakra-ui/core'
+import {Container, Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar, useDisclosure, Drawer, DrawerContent, DrawerOverlay, DrawerBody} from '@chakra-ui/core'
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {Figure, Product} from './childComponent';
 import {BsStarFill} from 'react-icons/bs';
+import {LinkProduct} from './objectLinkProduct';
 import chairs from '../../img/01_Halaman-newIn/header.png';
 import BarangBekas from '../../img/01_Halaman-newIn/RouteBarangBekas/barangBekas.jpg';
 import Kursi_Bangku from '../../img/01_Halaman-newIn/RouteKursi&Bangku/bangku.jpg';
@@ -10,7 +11,7 @@ import LampuBelajar from '../../img/01_Halaman-newIn/RouteLampuBelajar/lampuBela
 import Meja from '../../img/01_Halaman-newIn/RouteMeja/tabel.png';
 import Sofa from '../../img/01_Halaman-newIn/RouteSofa/sofa.png';
 import Tanaman from '../../img/01_Halaman-newIn/RouteTanaman/aksesoris tanaman.png';
-import RuangKeluarga from '../../img/01_Halaman-newIn/ruangKeluarga.jpg';
+import RuangKeluarga from '../../img/01_Halaman-newIn/realRoom.jpeg';
 import Me from '../../img/01_Halaman-newIn/me.jpg';
 import Footer from '../../component/footer/footer';
 
@@ -19,6 +20,7 @@ import coba1 from '../../img/01_Halaman-newIn/RouteTanaman/4.jpeg';
 import coba3 from '../../img/01_Halaman-newIn/RouteTanaman/5.jpg';
 
 function NewIn() {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const [isDesktop_Laptop_Tablet, isTablet , isMobile] = useMediaQuery([
         '(min-width: 1024px)', '(min-width: 768px) and (max-width : 1024px)', '(min-width: 200px) and (max-width:767px)'
     ])
@@ -54,15 +56,27 @@ function NewIn() {
                         <Box textAlign='center' mb={['5%']} mt={['','','10%','15%']}>
                             {isDesktop_Laptop_Tablet ? 
                                 <>
-                                    <Text cursor='pointer'>Accessories</Text>
-                                    <Text cursor='pointer'>Chairs & Stools</Text>
-                                    <Text cursor='pointer'>Sofas & armchairs</Text>
-                                    <Text cursor='pointer'>Tables</Text>
-                                    <Text cursor='pointer'>Lighting</Text>
-                                    <Text cursor='pointer'>Furnishings</Text>
+                                    {LinkProduct.map((item,index) => {
+                                        return <Text key={index} cursor='pointer' data-product={item.data_product}>{item.name}</Text>
+                                    })}
                                 </>
                                 :
-                                <Button w='50%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>Menu</Button>
+                                <>
+                                    <Drawer onClose={onClose} isOpen={isOpen} size='xs' placement='left'>
+                                        <DrawerOverlay>
+                                            <DrawerContent>
+                                                <DrawerBody>
+                                                    <VStack align='center'>
+                                                        {LinkProduct.map((item,index) => {
+                                                            return <Text key={index} cursor='pointer' data-product={item.data_product}>{item.name}</Text>
+                                                        })}
+                                                    </VStack>
+                                                </DrawerBody>
+                                            </DrawerContent>
+                                        </DrawerOverlay>
+                                    </Drawer>
+                                    <Button onClick={onOpen} w='50%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>Menu</Button>
+                                </>
                             }
                         </Box>
                     </SimpleGrid>
@@ -310,7 +324,7 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 3 -------*/}
-                <Grid templateColumns={['100%','100%','60% 40%','40% 30% 30%']} p={10} mt={5}>
+                <Grid templateColumns={['100%','100%','60% 40%','40% 30% 30%']} my={10}>
                     <Box textAlign='left' pr={10} mb={['10%','10%','','']}>  
                         <Text>Trending</Text>
                         <Heading>Latest News</Heading>
