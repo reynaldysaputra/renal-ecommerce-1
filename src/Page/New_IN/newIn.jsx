@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
-import {Container, Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar, useDisclosure, Drawer, DrawerContent, DrawerOverlay, DrawerBody} from '@chakra-ui/core'
+import React, { Fragment, useState, useEffect } from 'react';
+import {Container, Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar, useDisclosure, Drawer, DrawerContent, DrawerOverlay, DrawerBody, Skeleton, SkeletonText} from '@chakra-ui/core'
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {Figure, Product} from './childComponent';
+import {dataProduct} from './objectProduct';
 import {BsStarFill} from 'react-icons/bs';
 import {LinkProduct} from './objectLinkProduct';
 import chairs from '../../img/01_Halaman-newIn/header.png';
@@ -15,15 +16,23 @@ import RuangKeluarga from '../../img/01_Halaman-newIn/realRoom.jpeg';
 import Me from '../../img/01_Halaman-newIn/me.jpg';
 import Footer from '../../component/footer/footer';
 
-import coba from '../../img/01_Halaman-newIn/RouteTanaman/2.jpg';
-import coba1 from '../../img/01_Halaman-newIn/RouteTanaman/4.jpeg';
-import coba3 from '../../img/01_Halaman-newIn/RouteTanaman/5.jpg';
-
 function NewIn() {
+    const [data, setData] = useState(null);
+    const [time, setTime] = useState(0);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [isDesktop_Laptop_Tablet, isTablet , isMobile] = useMediaQuery([
         '(min-width: 1024px)', '(min-width: 768px) and (max-width : 1024px)', '(min-width: 200px) and (max-width:767px)'
     ])
+    
+    const handleDataProduct = (attr) => {
+        let dataFigure = (attr.target.className.split(' ')[1] == 'figure') ? attr.target.dataset.product : attr.target.parentElement.dataset.product;
+        setData(dataProduct.filter(item => item.name == dataFigure)[0]);
+        setTime(1);
+
+        setTimeout(() => {
+            setTime(0);
+        }, Math.floor(Math.random() * 3000 + 1000))
+    }
 
     return(
         <Fragment>
@@ -45,7 +54,7 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 2 -------*/}
-                <Grid layerStyle='GridContent2' mt='5%' fontFamily='poppins'> 
+                <Grid layerStyle='GridContent2' mt='5%' fontFamily='poppins' mb={['5%', '5%', '10%', '13%']}>  
                     <SimpleGrid h='max-content'>
                         <Box textAlign={['center','left','center','left']}>
                             <Text fontWeight='bold'>On Sale</Text>
@@ -57,7 +66,7 @@ function NewIn() {
                             {isDesktop_Laptop_Tablet ? 
                                 <>
                                     {LinkProduct.map((item,index) => {
-                                        return <Text key={index} cursor='pointer' data-product={item.data_product}>{item.name}</Text>
+                                        return <Text key={index} cursor='pointer' data-product={item.data_product} onClick={handleDataProduct} className='figure'>{item.name}</Text>
                                     })}
                                 </>
                                 :
@@ -68,7 +77,7 @@ function NewIn() {
                                                 <DrawerBody>
                                                     <VStack align='center'>
                                                         {LinkProduct.map((item,index) => {
-                                                            return <Text key={index} cursor='pointer' data-product={item.data_product}>{item.name}</Text>
+                                                            return <Text key={index} cursor='pointer' data-product={item.data_product} onClick={handleDataProduct} className='figure'>{item.name}</Text>
                                                         })}
                                                     </VStack>
                                                 </DrawerBody>
@@ -80,247 +89,81 @@ function NewIn() {
                             }
                         </Box>
                     </SimpleGrid>
-                    <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={10} justifyContent='center'>
-                        {
-                            isDesktop_Laptop_Tablet && 
-                            <>
-                                <Box>
-                                <Product textAlign='left' mb={7}>
-                                    <Center>
-                                        <Image src={coba} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                                <Product textAlign='left' mb={7}>
-                                    <Center>
-                                        <Image src={coba} w='90%' h='90%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                            </Box>
-                            <Box>
-                                <Product textAlign='left' mb={7}>
-                                    <Center w='full'>
-                                        <Image src={coba1} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                                <Product textAlign='left' mb={7}>
-                                    <Center w='full'>
-                                        <Image src={coba3} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                            </Box>
-                            </>
-                        }
-                        {
-                            isTablet && 
-                            <>
-                            <Box>
-                            <Product textAlign='left' mb={7}>
-                                <Center>
-                                    <Image src={coba} w='100%' />
-                                </Center>
-                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                <Flex h='max-content'>
-                                    <Box h='max-content'>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                    </Box>
-                                    <Spacer/>
-                                    <Text m='0px'>150 $</Text>
-                                </Flex>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                            </Product>
-                            <Product textAlign='left' mb={7}>
-                                <Center>
-                                    <Image src={coba} w='90%' h='90%' />
-                                </Center>
-                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                <Flex h='max-content'>
-                                    <Box h='max-content'>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                    </Box>
-                                    <Spacer/>
-                                    <Text m='0px'>150 $</Text>
-                                </Flex>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                            </Product>
-                        </Box>
-                        <Box>
-                            <Product textAlign='left' mb={7}>
-                                <Center w='full'>
-                                    <Image src={coba1} w='100%' />
-                                </Center>
-                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                <Flex h='max-content'>
-                                    <Box h='max-content'>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                    </Box>
-                                    <Spacer/>
-                                    <Text m='0px'>150 $</Text>
-                                </Flex>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                            </Product>
-                            <Product textAlign='left' mb={7}>
-                                <Center w='full'>
-                                    <Image src={coba3} w='100%' />
-                                </Center>
-                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                <Flex h='max-content'>
-                                    <Box h='max-content'>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                        <BsStarFill color='#F5BB0A'/>
-                                    </Box>
-                                    <Spacer/>
-                                    <Text m='0px'>150 $</Text>
-                                </Flex>
-                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                            </Product>
-                        </Box>
-                        </>
-                        }
-                        {
-                            isMobile && 
-                            <>
-                                <Product textAlign='left' mb={7}>
-                                    <Center>
-                                        <Image src={coba} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                                <Product textAlign='left' mb={7}>
-                                    <Center w='full'>
-                                        <Image src={coba1} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                                <Product textAlign='left' mb={7}>
-                                    <Center>
-                                        <Image src={coba} w='90%' h='90%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Jam tangan</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                                <Product textAlign='left' mb={7}>
-                                    <Center w='full'>
-                                        <Image src={coba3} w='100%' />
-                                    </Center>
-                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Celana levis</Heading>
-                                    <Flex h='max-content'>
-                                        <Box h='max-content'>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                            <BsStarFill color='#F5BB0A'/>
-                                        </Box>
-                                        <Spacer/>
-                                        <Text m='0px'>150 $</Text>
-                                    </Flex>
-                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>BUY</Button>
-                                </Product>
-                            </>
-                        }
-                    </Grid>
+                    {
+                        data == null && 
+                        <Grid templateColumns={['100%','100%','50% 50%','50% 50%']} gridColumnGap={5} gridRowGap={[7,5,0,0]} p='30px' boxSizing='border-box' w='80%' justifySelf='center' h='auto' >
+                            <Figure size='80%' justifySelf='flex-end' bg='#BADAC4' mt={['','','10%','15%']} data-product='Accessories' className='figure' onClick={handleDataProduct}>
+                                <Image src={Tanaman} w='80%' mb='25%' mt={['','','-20%','-25%']} />
+                                <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Accessories</Box>
+                            </Figure>
+                            <Figure size='80%' justifySelf='flex-start' mt={['','','40%','45%']} bg='#DBEDF0' data-product='Sofa' className='figure' onClick={handleDataProduct}>
+                                <Image src={Sofa} w='80%' mb='25%' mt={['','','-20%','-25%']} />
+                                <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Sofas & armchairs</Box>
+                            </Figure>
+                            <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0' data-product='Chairs & Stools' className='figure' onClick={handleDataProduct}>
+                                <Image src={Kursi_Bangku} w='100%'/>
+                                <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Chairs & Stools</Box>
+                            </Figure>
+                            <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']} pt={['25%','','30%','35%']} data-product='Table' className='figure' onClick={handleDataProduct}>
+                                <Box w='full' position='absolute' top='0' zIndex='-1' h='80%' bg='#FFEDDB'/>
+                                <Image src={Meja} w='100%' />
+                                <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Tables & Stools</Box>
+                            </Figure>
+                            <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']} data-product='Lighting' className='figure' onClick={handleDataProduct}>
+                                <Box w='75%' position='absolute' top='0' right='0' zIndex='-1' h='70%' bg='#FFEDDB'/>
+                                <Image src={LampuBelajar} w='80%' />
+                                <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Lighting</Box>
+                            </Figure>
+                            <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0' data-product='Furnishings' className='figure' onClick={handleDataProduct}>   
+                                <Image src={BarangBekas} w='100%'/>
+                                <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Furnishings</Box>
+                            </Figure>
+                        </Grid>
+                    }
+                    {
+                        data != null && time != 0 &&
+                            <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={5} justifyContent='center'>
+                                {
+                                    data.img.map((item,index) => {
+                                        return <Box shadow='md' padding={5} h='50vh' key={index}>
+                                                        <Skeleton height="40%" />
+                                                        <Skeleton height='30px' mt={5} />
+                                                        <SkeletonText height='20px' mt='20px' />
+                                                        <SkeletonText height='20px' mt='40px' />
+                                                    </Box> 
+                                    })
+                                }
+                            </Grid>
+                    } 
+                    {
+                        data != null && time == 0 && 
+                        <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={[3, 3, 5, 8]} justifyContent='center'>
+                            {
+                                (isDesktop_Laptop_Tablet || isMobile || isTablet) ?
+                                data.img.map((item, index) => {
+                                    console.log(window.location)
+                                    return <Product textAlign='left' key={index}>
+                                                <Center>
+                                                    <Image src={item.path} w='90%' h='90%' />
+                                                </Center>
+                                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Whatever Product</Heading>
+                                                <Flex h='max-content'>
+                                                    <Box h='max-content'>
+                                                        <BsStarFill color='#F5BB0A'/>
+                                                        <BsStarFill color='#F5BB0A'/>
+                                                        <BsStarFill color='#F5BB0A'/>
+                                                        <BsStarFill color='#F5BB0A'/>
+                                                    </Box>
+                                                    <Spacer/>
+                                                    <Text m='0px'>150 $</Text>
+                                                </Flex>
+                                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
+                                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}} cursor='pointer'>BUY</Button>
+                                            </Product> 
+                                }) : false
+                            }
+                        </Grid>
+                    }
                 </Grid>
 
                 {/* ------- CONTENT 3 -------*/}

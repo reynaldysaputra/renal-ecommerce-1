@@ -28,6 +28,10 @@ export const styleNewIn = {
     }
 }
 
+{/* <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={10} justifyContent='center'>
+                                
+</Grid> */}
+
 // {   
 //     isDesktop_Laptop_Tablet && 
 //     <>
