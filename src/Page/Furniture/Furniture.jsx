@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Grid, Box, Flex, Image, Center, Text, Heading, Divider, HStack, Avatar } from '@chakra-ui/core';
+import { Grid, Box, Flex, Image, Center, Text, Heading, Divider, HStack, Avatar, Spacer, Button } from '@chakra-ui/core';
 import ImgHeader from '../../img/02_Halaman-furniture/header1.jpg';
 import ImgHeader2 from '../../img/02_Halaman-furniture/header2.jpg';
 import ImgHeader3 from '../../img/02_Halaman-furniture/header3.jpg';
@@ -9,6 +9,9 @@ import { TrendingContent, BoxTrending } from '../../component/contentTrending/tr
 import TextTransparent from '../../component/textOpacity/textOpacity';
 import EnjoyRoom from '../../img/02_Halaman-furniture/enjoyRoom.jpg';
 import bagus from '../../img/02_Halaman-furniture/bagus.jpg'
+import one from '../../img/02_Halaman-furniture/1.png';
+import { objectProduct } from './objectProductFurniture';
+import Footer from '../../component/footer/footer';
 
 function Furniture() {
     return(
@@ -61,7 +64,29 @@ function Furniture() {
                 </TrendingContent>
 
                 {/* Content 3 */}
+                <Grid templateColumns={['100%','100%','45% 45%','45% 45%']} gap={[5,5,8,10]} justifyContent='center' my='10%'>
+                    {objectProduct.map((item, index) => {
+                      return <HStack spacing={7} key={index} mb={['5%','5%','','']}>
+                                    <Box w='45%' pos='relative'>
+                                        <Center w='full' h='50%' bg={item.bg} pos='absolute' top='0' zIndex='-1' />
+                                        <Image src={item.pathImg} w='full' />
+                                    </Box>
+                                    <Box w='45%' alignSelf='flex-start'>
+                                        <Flex w='full' mb={0}>
+                                            <Heading fontSize={['0.8rem','15px','0.8rem','md']}  m={0}>{item.name}</Heading>
+                                            <Spacer/>
+                                            <Heading fontSize={['0.7rem','15px','sm','sm']} m={0}>230 $</Heading>
+                                        </Flex>
+                                        <TextTransparent m={0}>Within 10 days</TextTransparent>
+                                        <TextTransparent opacity='.7'>Armchair in scandinavian design upholstered with fabric Miss pattern. Backrest with decorative buttons. Legs in natural wood.</TextTransparent>
+                                        <Button fontSize='sm' h='25px' cursor='pointer' border='1.5px solid' color='white' bg='fontColorFirst' _hover={{bg:'transparent', color:'fontColorFirst'}}>BUY NOW</Button>
+                                    </Box>
+                                </HStack>  
+                    })}
+                </Grid>
 
+                {/* Content 4 */}
+                <Footer/>
             </ContainerApp>
         </Fragment>
     )
