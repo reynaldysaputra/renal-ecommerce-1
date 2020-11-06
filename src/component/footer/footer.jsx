@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import {Box, Heading, SimpleGrid, Text, Wrap, WrapItem,Divider, Flex, Spacer, HStack, Link} from '@chakra-ui/core';
+import {Box, Heading, SimpleGrid, Text, Wrap, WrapItem,Divider, Flex, Spacer, HStack, Link, Grid} from '@chakra-ui/core';
 import {FiInstagram} from 'react-icons/fi';
 import {AiFillLinkedin} from 'react-icons/ai';
 
@@ -10,7 +10,7 @@ function TextFooter({...props}) {
 function Footer() {
     return(
         <Fragment>
-            <SimpleGrid columns={[1,1,2,2]} gap={[0,0,10,10]} justifyContent='center'> 
+            <Grid templateColumns={['100%','100%','48% 45%','45% 40%']} gap={[0,0,10,10]} justifyContent='center'> 
                 <Box>
                     <Heading fontSize='lg'>Helpful Links</Heading>
                     <Wrap spacing={[5,5,5,20]}>
@@ -53,7 +53,7 @@ function Footer() {
                         </WrapItem>
                     </Wrap>
                 </Box>
-            </SimpleGrid>
+            </Grid>
 
             <Divider w='full' mt={5} opacity='.3' />
 

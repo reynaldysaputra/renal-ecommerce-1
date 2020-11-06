@@ -58,7 +58,7 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 2 -------*/}
-                <Grid layerStyle='GridContent2' mt='5%' fontFamily='poppins' mb={['5%', '5%', '10%', '13%']}>  
+                <Grid layerStyle='GridContent2' fontFamily='poppins' mb={['5%', '5%', '10%', '13%']}>  
                     <SimpleGrid h='max-content'>
                         <Box textAlign={['center','left','center','left']}>
                             <Text fontWeight='bold'>On Sale</Text>
@@ -171,7 +171,7 @@ function NewIn() {
 
                 {/* ------- CONTENT 3 -------*/}
                 <TrendingContent>
-                    <BoxTrending textStyleAlign paddingRightReady marginBottomStyle>  
+                    <BoxTrending textStyleAlign paddingStyle marginBottomStyle>  
                         <Text fontWeight={{base:'medium'}}>Trending</Text>
                         <Heading>Latest News</Heading>
                         <Divider w={['80%','0','50%','50%']} border='2px' color='#2C2E3F' margin={['auto','0','auto','0']} />
