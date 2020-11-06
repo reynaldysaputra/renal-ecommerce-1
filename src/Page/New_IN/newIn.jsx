@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import {Container, Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar, useDisclosure, Drawer, DrawerContent, DrawerOverlay, DrawerBody, Skeleton, SkeletonText} from '@chakra-ui/core'
+import {Grid, Box, Image, Text, VStack,Center, Heading, Button, SimpleGrid, Divider, useMediaQuery,HStack, Flex, Spacer, Avatar, useDisclosure, Drawer, DrawerContent, DrawerOverlay, DrawerBody, Skeleton, SkeletonText} from '@chakra-ui/core'
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import {Figure, Product} from './childComponent';
 import {dataProduct} from './objectProduct';
@@ -15,6 +15,10 @@ import Tanaman from '../../img/01_Halaman-newIn/RouteTanaman/aksesoris tanaman.p
 import RuangKeluarga from '../../img/01_Halaman-newIn/realRoom.jpeg';
 import Me from '../../img/01_Halaman-newIn/me.jpg';
 import Footer from '../../component/footer/footer';
+import ContainerApp from '../../component/container_C/container';
+import TextTransparent from '../../component/textOpacity/textOpacity';
+import ButtonIconRight from '../../component/buttonIconRightHover/button';
+import {TrendingContent,BoxTrending} from '../../component/contentTrending/trendingContent';
 
 function NewIn() {
     const [data, setData] = useState(null);
@@ -36,7 +40,7 @@ function NewIn() {
 
     return(
         <Fragment>
-            <Container mt='3%' maxW={{sm:'sm' ,lg:'lg', md:'lg', xl:'lg'}} pos='relative' boxSizing='border-box'>
+            <ContainerApp>
                 {/* ------- CONTENT 1 -------*/}
                 <Grid layerStyle='Container1NewIn'>
                     <VStack h={['auto','60vh','60vh','80vh']} bg='#F5F8FC' px={['0','0','0','0']}>
@@ -45,11 +49,11 @@ function NewIn() {
                         <Box pos={{base:'relative', xl:'absolute', md:'absolute', lg:'absolute'}} top={['0','30%','25%','15%']} left={['0','30%','55%','50%']} my={['10% !important','0%','0%','0%']} fontFamily='poppins' textAlign={['center','left','left','left']}>
                             <Text m='0' fontWeight='bold'>New Collection</Text>
                             <Heading fontWeight='bold' fontSize={{base:'4xl',md:'6xl !important',lg:'6xl',xl:'6xl'}} mb='15px' mt='15px !important'>Chairs & Stools</Heading>
-                            <Text w={{base:"100%",md:'50%',lg:'50%',xl:'50%'}} fontWeight='thin' opacity='0.3' fontSize='sm'>Armchair upholstered in synthetic leather. Powder coated steel legs.</Text>
+                            <TextTransparent w={{base:"100%",md:'50%',lg:'50%',xl:'50%'}} fontWeight='thin' fontSize='sm'>Armchair upholstered in synthetic leather. Powder coated steel legs.</TextTransparent>
                         </Box>
                     </VStack>
                     <SimpleGrid h={['auto','60vh','60vh','80vh']} bg='#FFFBF8' alignContent='flex-end' textAlign='left'>
-                        <Button rightIcon={<ArrowForwardIcon />} layerStyle='ButtonContainer' _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}}>SHOP NOW</Button>
+                        <ButtonIconRight styleButton='ButtonContainer' colorHover='#2C2E3F' borderButton='1px solid #2C2E3F' bg='pinkColor'>SHOP NOW</ButtonIconRight>
                     </SimpleGrid>
                 </Grid>
 
@@ -60,7 +64,7 @@ function NewIn() {
                             <Text fontWeight='bold'>On Sale</Text>
                             <Heading my={5}>Up to 20% off</Heading>
                             <Divider w={['80%','0','40%','80%']} border='2px' color='#2C2E3F' margin={['auto','0','auto','0']} />
-                            <Text opacity='0.3' fontSize='xs'>Our entire Winter collection.</Text>
+                            <TextTransparent>Our entire Winter collection.</TextTransparent>
                         </Box>
                         <Box textAlign='center' mb={['5%']} mt={['','','10%','15%']}>
                             {isDesktop_Laptop_Tablet ? 
@@ -137,29 +141,28 @@ function NewIn() {
                     } 
                     {
                         data != null && time == 0 && 
-                        <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={[3, 3, 5, 8]} justifyContent='center'>
+                        <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={[3, 3, 5, 8]} p={[5,5,0,0]} justifyContent='center'>
                             {
                                 (isDesktop_Laptop_Tablet || isMobile || isTablet) ?
                                 data.img.map((item, index) => {
-                                    console.log(window.location)
-                                    return <Product textAlign='left' key={index}>
-                                                <Center>
-                                                    <Image src={item.path} w='90%' h='90%' />
-                                                </Center>
-                                                <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Whatever Product</Heading>
-                                                <Flex h='max-content'>
-                                                    <Box h='max-content'>
-                                                        <BsStarFill color='#F5BB0A'/>
-                                                        <BsStarFill color='#F5BB0A'/>
-                                                        <BsStarFill color='#F5BB0A'/>
-                                                        <BsStarFill color='#F5BB0A'/>
-                                                    </Box>
-                                                    <Spacer/>
-                                                    <Text m='0px'>150 $</Text>
-                                                </Flex>
-                                                <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
-                                                <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}} cursor='pointer'>BUY</Button>
-                                            </Product> 
+                                    return <Product textAlign='left' key={index} mb={5}>
+                                                    <Center>
+                                                        <Image src={item.path} w='90%' h='90%' />
+                                                    </Center>
+                                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Whatever Product</Heading>
+                                                    <Flex h='max-content'>
+                                                        <Box h='max-content'>
+                                                            <BsStarFill color='#F5BB0A'/>
+                                                            <BsStarFill color='#F5BB0A'/>
+                                                            <BsStarFill color='#F5BB0A'/>
+                                                            <BsStarFill color='#F5BB0A'/>
+                                                        </Box>
+                                                        <Spacer/>
+                                                        <Text m='0px'>150 $</Text>
+                                                    </Flex>
+                                                    <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit debitis quia in sint voluptas? Dolor dicta est commodi. Expedita quae aliquam nam in a velit non fuga vero impedit quibusdam?</Text>
+                                                    <Button w='100%' bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}} cursor='pointer'>BUY</Button>
+                                                </Product> 
                                 }) : false
                             }
                         </Grid>
@@ -167,29 +170,29 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 3 -------*/}
-                <Grid templateColumns={['100%','100%','60% 40%','40% 30% 30%']} my={10}>
-                    <Box textAlign='left' pr={10} mb={['10%','10%','','']}>  
-                        <Text>Trending</Text>
+                <TrendingContent>
+                    <BoxTrending textStyleAlign paddingRightReady marginBottomStyle>  
+                        <Text fontWeight={{base:'medium'}}>Trending</Text>
                         <Heading>Latest News</Heading>
                         <Divider w={['80%','0','50%','50%']} border='2px' color='#2C2E3F' margin={['auto','0','auto','0']} />
-                        <Text opacity='0.3' fontSize='xs'>Brighten up your living areas this Winter with top tips from our interior design team.</Text>
-                        <Button rightIcon={<ArrowForwardIcon />}  bg='#2C2E3F' color='white' rounded='0' border='0'  _hover={{bg:'transparent', color:'#2C2E3F', border: '1px solid #2C2E3F'}} cursor='pointer' mt={3}>EXPLORE ALL ARTICLES</Button>
-                    </Box>
+                        <TextTransparent>Brighten up your living areas this Winter with top tips from our interior design team.</TextTransparent>
+                        <ButtonIconRight bg='#2C2E3F' color='white' colorHover='#2C2E3F' borderButton='1px solid black' cursor='pointer' mt={3} rounded='0' border='0'>EXPLORE ALL ARTICLES</ButtonIconRight>
+                    </BoxTrending>
                     <Image src={RuangKeluarga} w='full' />
-                    <Box p={5}>
+                    <BoxTrending p={5}>
                         <Text fontSize='3xl' fontWeight='medium' lineHeight='2rem'>Living room and lighting ideas that will inspire you this Winter.</Text>
                         <Divider w={['80%','0','50%','50%']} border='2px' color='#BADAC4' margin={['auto','0','auto','0']} />
-                        <Text opacity='0.3' fontSize='xs'>Choosing the right mattress is not so simple. We all sleep in a different way and we all want our mattress to adapt perfectly to our body.</Text>
+                        <TextTransparent>Choosing the right mattress is not so simple. We all sleep in a different way and we all want our mattress to adapt perfectly to our body.</TextTransparent>
                         <HStack mt={5} spacing={5}>
                             <Avatar src={Me} name='Reynaldy saputra'/>
                             <Text m={0} fontSize='md'>Reynaldy Saputra</Text>
                         </HStack>
-                    </Box>
-                </Grid>
+                    </BoxTrending>
+                </TrendingContent>
 
               {/* ------- CONTENT 4-------*/}          
               <Footer/>
-            </Container>
+            </ContainerApp>
         </Fragment>
     )
 }

@@ -58,7 +58,7 @@ function Footer() {
             <Divider w='full' mt={5} opacity='.3' />
 
             <Flex mb={5}>
-                <Text fontSize='sm' opacity='.3'>© 2020 Mass Impressions. Designed by Reynaldy Saputra</Text>
+                <Text fontSize={['15px','15px','sm','sm']} opacity='.3'>© 2020 Mass Impressions. Designed by Reynaldy Saputra</Text>
 
                 <Spacer/>
 

@@ -1,4 +1,4 @@
-import {extendTheme} from '@chakra-ui/core';
+import {color, extendTheme} from '@chakra-ui/core';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import {styleNavigation} from '../navigation/layerStyleNavigation';
 import { styleNewIn } from '../Page/New_IN/layerStyleNewIn';
@@ -10,10 +10,15 @@ const breakpoints = createBreakpoints({
     xl : '1280px'
 });
 
+const myColor = {
+    navbarColor : '#2C2E3F',
+    fontColorFirst : '#2C2E3F',
+    pinkColor : '#FE7865'
+}
+
 const myTheme = {
-    color : {
-        navbarColor : '#2C2E3F',
-        fontColorFirst : '#2C2E3F'
+    colors : {
+        ...myColor
     },
 
     fontFamily : {

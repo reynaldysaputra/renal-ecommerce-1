@@ -5,6 +5,7 @@ import {HiOutlineMenuAlt1} from 'react-icons/hi';
 import {AiOutlineClose} from 'react-icons/ai';
 import {arrayMenu} from '../controller/menuObject';
 import { NavLink, withRouter } from 'react-router-dom';
+import ContainerApp from '../component/container_C/container';
 
 function Navigation() {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -15,9 +16,9 @@ function Navigation() {
     return(
         <Fragment>
             <Box layerStyle='containerDesktopDevice' zIndex='99'>
-                <Container maxW={{lg:'lg', md:'lg', xl:'lg'}} w='auto'>
+                <ContainerApp mt='0% !important'>
                     <Flex>
-                        <Link as={NavLink} exact to='/' fontSize='2xl' my={3} _hover='' fontWeight='bold'   >Furniture</Link>
+                        <Link as={NavLink} exact to='/' fontSize='2xl' my={3} _hover='' fontWeight='black'>Furniture</Link>
 
                         <Spacer/>
 
@@ -43,7 +44,7 @@ function Navigation() {
                             </Center> : false
                         }
                     </Flex>
-                </Container>
+                </ContainerApp>
             </Box>
 
         </Fragment>
