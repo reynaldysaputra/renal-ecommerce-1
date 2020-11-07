@@ -100,31 +100,3 @@ export const dataProduct = [
     }
 ]
 
-//  <Grid templateColumns={['100%','100%','50% 50%','50% 50%']} gridColumnGap={5} gridRowGap={[7,5,0,0]} p='30px' boxSizing='border-box' w='80%' justifySelf='center' h='auto' >
-//                         <Figure size='80%' justifySelf='flex-end' bg='#BADAC4' mt={['','','10%','15%']} data-product='Accessories' className='figure' onClick={handleDataProduct}>
-//                             <Image src={Tanaman} w='80%' mb='25%' mt={['','','-20%','-25%']} />
-//                             <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Accessories</Box>
-//                         </Figure>
-//                         <Figure size='80%' justifySelf='flex-start' mt={['','','40%','45%']} bg='#DBEDF0' data-product='Sofa' className='figure' onClick={handleDataProduct}>
-//                             <Image src={Sofa} w='80%' mb='25%' mt={['','','-20%','-25%']} />
-//                             <Box bg='white' p='5px 10px' pos='absolute' bottom='0' right='0' boxSizing='border-box'>Sofas & armchairs</Box>
-//                         </Figure>
-//                         <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0' data-product='Chairs & Stools' className='figure' onClick={handleDataProduct}>
-//                             <Image src={Kursi_Bangku} w='100%'/>
-//                             <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Chairs & Stools</Box>
-//                         </Figure>
-//                         <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']} pt={['25%','','30%','35%']} data-product='Table' className='figure' onClick={handleDataProduct}>
-//                             <Box w='full' position='absolute' top='0' zIndex='-1' h='80%' bg='#FFEDDB'/>
-//                             <Image src={Meja} w='100%' />
-//                             <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Tables & Stools</Box>
-//                         </Figure>
-//                         <Figure size='100%'  justifySelf='flex-start' mt={['','','10%','10%']} data-product='Lighting' className='figure' onClick={handleDataProduct}>
-//                             <Box w='75%' position='absolute' top='0' right='0' zIndex='-1' h='70%' bg='#FFEDDB'/>
-//                             <Image src={LampuBelajar} w='80%' />
-//                             <Box bg='white' p='5px 10px' pos='absolute' top='0' right='0' m='0px !important' boxSizing='border-box'>Lighting</Box>
-//                         </Figure>
-//                         <Figure size='100%' justifySelf='flex-start' bg='#DBEDF0' data-product='Furnishings' className='figure' onClick={handleDataProduct}>   
-//                             <Image src={BarangBekas} w='100%'/>
-//                             <Box bg='white' p='5px 10px' pos='absolute' top='0' left='0' m='0px !important' boxSizing='border-box'>Furnishings</Box>
-//                         </Figure>
-//                     </Grid> 
