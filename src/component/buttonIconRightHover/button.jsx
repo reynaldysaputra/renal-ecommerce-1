@@ -11,7 +11,7 @@ function ButtonIconRight({styleButton ,colorHover, borderButton, ...props}) {
 
     return(
         <Fragment>
-            <Button rightIcon={<ArrowForwardIcon />} layerStyle={styleButton} _hover={hoverButton} {...props}>
+            <Button rightIcon={<ArrowForwardIcon />} boxSizing='border-box' layerStyle={styleButton} _hover={hoverButton} {...props}>
 
             </Button>
 

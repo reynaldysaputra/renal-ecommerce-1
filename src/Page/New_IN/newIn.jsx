@@ -58,7 +58,7 @@ function NewIn() {
                 </Grid>
 
                 {/* ------- CONTENT 2 -------*/}
-                <Grid layerStyle='GridContent2' fontFamily='poppins' mb={['5%', '5%', '10%', '13%']}>  
+                <Grid layerStyle='GridContent2' fontFamily='poppins' mb={['5%', '5%', '10%', '13%']} mt={[5,0,5,'3%']}>  
                     <SimpleGrid h='max-content'>
                         <Box textAlign={['center','left','center','left']}>
                             <Text fontWeight='bold'>On Sale</Text>
@@ -141,7 +141,7 @@ function NewIn() {
                     } 
                     {
                         data != null && time == 0 && 
-                        <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={[3, 3, 5, 8]} p={[5,5,0,0]} justifyContent='center'>
+                        <Grid gridTemplateColumns={['100%','100%','40% 40%','40% 40%']} gap={[3, 3, 5, 8]} p={[5,5,0,0]}  justifyContent='center'>
                             {
                                 (isDesktop_Laptop_Tablet || isMobile || isTablet) ?
                                 data.img.map((item, index) => {
@@ -149,7 +149,7 @@ function NewIn() {
                                                     <Center>
                                                         <Image src={item.path} w='90%' h='90%' />
                                                     </Center>
-                                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='fantasy' mb={1}>Whatever Product</Heading>
+                                                    <Heading fontSize='2xl' fontWeight='semibold' fontFamily='poppins' mb={1}>Whatever Product</Heading>
                                                     <Flex h='max-content'>
                                                         <Box h='max-content'>
                                                             <BsStarFill color='#F5BB0A'/>
