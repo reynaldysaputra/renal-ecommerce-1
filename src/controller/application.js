@@ -5,6 +5,7 @@ import Furniture from '../Page/Furniture/Furniture';
 import Help_page from '../Page/Help_page/help';
 import Magazine from '../Page/Magazine/magazine';
 import NewIn from '../Page/New_IN/newIn';
+import SignIn from '../Page/SignIn/signin';
 
 function Application() {
     return(
@@ -16,12 +17,10 @@ function Application() {
                     <Route  path='/furniture' component={Furniture} />
                     <Route  path='/magazine' component={Magazine} />
                     <Route  path='/help' component={Help_page} />
-                    <Route  path='/signin' component={e} />
+                    <Route  path='/signin' component={SignIn} />
                 </Switch>        
             </BrowserRouter>
     )
 }
-
-const e = () =>  <h1>E</h1>;
 
 export default Application;
