@@ -24,10 +24,3 @@ export const LinkProduct = [
         name : 'Furnishings'
     }
 ]
-
-{/* <Box shadow='md' padding={5} h='50vh'>
-<Skeleton height="40%" />
-<Skeleton height='30px' mt={5} />
-<SkeletonText height='20px' mt='20px' />
-<SkeletonText height='20px' mt='40px' />
-</Box>  */}
