@@ -13,7 +13,7 @@ function Footer() {
             <Grid templateColumns={['100%','100%','48% 45%','45% 40%']} gap={[0,0,10,10]} justifyContent='center'> 
                 <Box>
                     <Heading fontSize='lg'>Helpful Links</Heading>
-                    <Wrap spacing={[5,5,5,20]}>
+                    <Wrap spacing={[2,5,5,20]}>
                         <WrapItem>
                             <Box>
                                 <TextFooter>About us</TextFooter>
@@ -58,7 +58,7 @@ function Footer() {
             <Divider w='full' mt={5} opacity='.3' />
 
             <Flex mb={5}>
-                <Text fontSize={['15px','15px','sm','sm']} opacity='.3'>© 2020 Mass Impressions. Designed by Reynaldy Saputra</Text>
+                <Text fontSize={['0.9rem','0.9rem','sm','sm']} opacity='.3'>© 2020 Mass Impressions. Designed by Reynaldy Saputra</Text>
 
                 <Spacer/>
 
